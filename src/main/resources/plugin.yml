@@ -1,0 +1,4 @@
+name: Chuseok
+version: '${project.version}'
+main: kr.dyoh1379.chuseok.Chuseok
+api-version: '1.20'
