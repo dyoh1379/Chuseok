@@ -5,9 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class SongPyeons {
@@ -69,6 +67,39 @@ public class SongPyeons {
 
         return itemStack;
     }
+
+    public static ItemStack SET() {
+        ItemStack itemStack = new ItemStack(Material.BOWL, 1);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
+        itemMeta.setDisplayName("§f§l송§c§l편 §2§l세§e§l트");
+        itemMeta.setCustomModelData(1);
+        itemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
+        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        itemStack.setItemMeta(itemMeta);
+
+        return itemStack;
+    }
+
+    public static void addRecipeSet() {
+        NamespacedKey key = new NamespacedKey(plugin, "songpyeon_set");
+        ShapelessRecipe setRecipe = new ShapelessRecipe(key, SongPyeons.SET());
+
+        // 하얀 송편, 빨간 송편, 초록 송편, 노란 송편
+        setRecipe.addIngredient(new RecipeChoice.ExactChoice(WHITE()));
+        setRecipe.addIngredient(new RecipeChoice.ExactChoice(RED()));
+        setRecipe.addIngredient(new RecipeChoice.ExactChoice(GREEN()));
+        setRecipe.addIngredient(new RecipeChoice.ExactChoice(YELLOW()));
+
+        Bukkit.getServer().addRecipe(setRecipe);
+    }
+
+    public static void removeRecipeSet() {
+        NamespacedKey key = new NamespacedKey(plugin, "songpyeon_set");
+        Bukkit.getServer().removeRecipe(key);
+    }
+
 
     public static void addRecipeWhite() {
         NamespacedKey key = new NamespacedKey(plugin, "white_songpyeon");

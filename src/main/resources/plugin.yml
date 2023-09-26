@@ -6,3 +6,8 @@ author: dyoh1379
 website: https://www.youtube.com/괴다
 commands:
   game:
+    description: 추석 맨헌트의 명령어를 실행합니다.
+    usage: /game <value>
+  songpyeon:
+    description: 송편을 지급합니다.
+    usage: /songpyeon <type> <player> <option:amount>

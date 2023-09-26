@@ -43,6 +43,11 @@ public class Game implements CommandExecutor, TabCompleter {
                     return true;
                 }
 
+                if (gameProcess) {
+                    sender.sendMessage(ChatColor.RED + "이미 게임이 진행중입니다!");
+                    return true;
+                }
+
                 gameProcess = true;
                 Bukkit.setWhitelist(false);
 
@@ -71,6 +76,12 @@ public class Game implements CommandExecutor, TabCompleter {
             }
 
             if (args[0].equals("stop")) {
+
+                if (!gameProcess) {
+                    sender.sendMessage(ChatColor.RED + "게임이 진행중이지 않습니다!");
+                    return true;
+                }
+
                 gameProcess = false;
 
                 sender.sendMessage("게임을 종료했습니다.");
